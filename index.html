@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageToolsPro | Free Online Image Editing Tools</title>
+    <meta name="description" content="Free online image tools - remove backgrounds, crop, resize, convert, and compress images. All tools work in your browser with no upload required.">
+    <meta name="keywords" content="image editor, background remover, image cropper, image resizer, image converter, image compressor, free photo tools">
+    <meta name="author" content="ImageToolsPro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="ImageToolsPro | Free Online Image Editing Tools">
+    <meta property="og:description" content="Free online image tools - remove backgrounds, crop, resize, convert, and compress images. All tools work in your browser.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourdomain.com">
+    <meta property="og:image" content="https://www.yourdomain.com/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --primary-dark: #3a5bef;
+            --secondary-color: #f8f9fa;
+            --text-color: #2d3436;
+            --light-text: #636e72;
+            --border-color: #dfe6e9;
+            --success-color: #00b894;
+            --warning-color: #fdcb6e;
+            --error-color: #d63031;
+            --footer-bg: #1e272e;
+            --footer-text: #dfe6e9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f5f6fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--text-color);
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        .ad-banner {
+            background-color: #f1f3ff;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px dashed var(--border-color);
+        }
+        
+        .ad-banner p {
+            color: var(--light-text);
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        /* Vertical Ad Styles */
+        .vertical-ad-container {
+            display: none; /* Hidden by default */
+        }
+        
+        .vertical-ad {
+            background-color: #f1f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed var(--border-color);
+            position: sticky;
+            top: 100px;
+            margin-bottom: 30px;
+        }
+        
+        .vertical-ad p {
+            color: var(--light-text);
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .main-content-with-ads {
+            display: block;
+        }
+        
+        .features-with-ad {
+            display: block;
+        }
+        
+        main {
+            padding: 40px 0;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .hero p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(74, 107, 255, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(74, 107, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(74, 107, 255, 0.1);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .tool-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tool-image {
+            height: 180px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f8f9fa;
+        }
+        
+        .tool-content {
+            padding: 25px;
+        }
+        
+        .tool-icon {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .tool-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .tool-card p {
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            color: var(--text-color);
+        }
+        
+        .feature-card p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .testimonials {
+            margin-bottom: 60px;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 60px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .cta-section p {
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        /* Enhanced Footer Styles */
+        footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 60px 0 30px;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: all 0.3s;
+            opacity: 0.8;
+            display: inline-block;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #fff;
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .copyright {
+            color: var(--footer-text);
+            opacity: 0.7;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: all 0.3s;
+            opacity: 0.7;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--footer-text);
+            font-size: 18px;
+            transition: all 0.3s;
+            opacity: 0.7;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+        
+        @media (min-width: 1024px) {
+            .vertical-ad-container {
+                display: block;
+                position: relative;
+            }
+            
+            .main-content-with-ads {
+                display: grid;
+                grid-template-columns: 1fr 300px;
+                gap: 30px;
+            }
+        
+            .features-with-ad {
+                display: grid;
+                grid-template-columns: 300px 1fr;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card, .testimonial-card {
+                padding: 25px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fas fa-crop-alt"></i></span>
+                <span>Image<span style="color: var(--primary-color);">ToolsPro</span></span>
+            </a>
+            
+            <button class="mobile-menu-btn">☰</button>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="compress.html">Compressor</a></li>
+                    <li><a href="resize.html">Resizer</a></li>
+                    <li><a href="convert.html">Converter</a></li>
+                    <li><a href="crop.html">Cropper</a></li>
+                    <li><a href="remove-bg.html">Background Remover</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Top Ad Banner -->
+        <div class="ad-banner">
+            <p>Advertisement</p>
+            <!-- Replace with your Google AdSense code -->
+            <div id="top-ad">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                     crossorigin="anonymous"></script>
+                <!-- ImageToolsPro Top Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        
+        <section class="hero">
+            <h1>Powerful Image Tools for Everyone</h1>
+            <p>Edit, optimize, and transform your images with our free online tools. No registration required - works right in your browser!</p>
+            <a href="#tools" class="btn">Explore Tools</a>
+        </section>
+        
+        <div class="main-content-with-ads">
+            <div>
+                <section id="tools" class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-image" style="background-image: url('images/remove-bg.png');"></div>
+                        <div class="tool-content">
+                            <div class="tool-icon"><i class="fas fa-magic"></i></div>
+                            <h3>Background Remover</h3>
+                            <p>Automatically remove backgrounds from images with AI-powered technology.</p>
+                            <a href="remove-bg.html" class="btn btn-outline">Use Tool</a>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-image" style="background-image: url('images/crop.png');"></div>
+                        <div class="tool-content">
+                            <div class="tool-icon"><i class="fas fa-crop"></i></div>
+                            <h3>Image Cropper</h3>
+                            <p>Crop images to any dimensions with precise controls and aspect ratio presets.</p>
+                            <a href="crop.html" class="btn btn-outline">Use Tool</a>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-image" style="background-image: url('images/resize.png');"></div>
+                        <div class="tool-content">
+                            <div class="tool-icon"><i class="fas fa-expand"></i></div>
+                            <h3>Image Resizer</h3>
+                            <p>Resize images to any dimensions while maintaining quality and aspect ratio.</p>
+                            <a href="resize.html" class="btn btn-outline">Use Tool</a>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-image" style="background-image: url('images/convert.png');"></div>
+                        <div class="tool-content">
+                            <div class="tool-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <h3>Image Converter</h3>
+                            <p>Convert between JPG, PNG, WebP, and other formats with quality control.</p>
+                            <a href="convert.html" class="btn btn-outline">Use Tool</a>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-image" style="background-image: url('images/compress.png');"></div>
+                        <div class="tool-content">
+                            <div class="tool-icon"><i class="fas fa-compress-alt"></i></div>
+                            <h3>Image Compressor</h3>
+                            <p>Reduce image file size without noticeable quality loss for faster websites.</p>
+                            <a href="compress.html" class="btn btn-outline">Use Tool</a>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Middle Ad Banner -->
+                <div class="ad-banner">
+                    <p>Advertisement</p>
+                    <!-- Replace with your Google AdSense code -->
+                    <div id="middle-ad">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                             crossorigin="anonymous"></script>
+                        <!-- ImageToolsPro Middle Rectangle -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                             data-ad-slot="YOUR_AD_SLOT_ID"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+                
+                <div class="features-with-ad">
+                    <div class="vertical-ad-container">
+                        <div class="vertical-ad">
+                            <p>Advertisement</p>
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                                 crossorigin="anonymous"></script>
+                            <!-- ImageToolsPro Vertical Left -->
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                                 data-ad-slot="YOUR_VERTICAL_AD_SLOT_ID_LEFT"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <section class="features">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                                <h3>Privacy Focused</h3>
+                                <p>All image processing happens in your browser. Your files never leave your device, ensuring complete privacy.</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                                <h3>Lightning Fast</h3>
+                                <p>Our tools are optimized for speed, processing your images in seconds without any server delays.</p>
+                            </div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-dollar-sign"></i></div>
+                                <h3>100% Free</h3>
+                                <p>All our tools are completely free to use with no hidden charges or watermarks on your images.</p>
+                            </div>
+                        </section>
+                        
+                        <section class="testimonials">
+                            <h2>What Our Users Say</h2>
+                            <div class="testimonial-grid">
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">"The background remover saved me hours of work. It's so accurate and easy to use!"</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">JD</div>
+                                        <div class="author-info">
+                                            <h4>John D.</h4>
+                                            <p>Graphic Designer</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">"I use the image compressor daily for my blog. Reduced my page load times significantly."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">SM</div>
+                                        <div class="author-info">
+                                            <h4>Sarah M.</h4>
+                                            <p>Blogger</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="testimonial-card">
+                                    <p class="testimonial-text">"The batch processing in the converter tool is a lifesaver for my e-commerce store."</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">AP</div>
+                                        <div class="author-info">
+                                            <h4>Alex P.</h4>
+                                            <p>Online Seller</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section class="cta-section">
+                            <h2>Ready to Edit Your Images?</h2>
+                            <p>Choose from our powerful tools to transform your photos in seconds. No registration or installation required.</p>
+                            <a href="#tools" class="btn">Get Started Now</a>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="vertical-ad-container">
+                <div class="vertical-ad">
+                    <p>Advertisement</p>
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                         crossorigin="anonymous"></script>
+                    <!-- ImageToolsPro Vertical Right -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                         data-ad-slot="YOUR_VERTICAL_AD_SLOT_ID_RIGHT"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Bottom Ad Banner -->
+    <div class="container">
+        <div class="ad-banner">
+            <p>Advertisement</p>
+            <!-- Replace with your Google AdSense code -->
+            <div id="bottom-ad">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                     crossorigin="anonymous"></script>
+                <!-- ImageToolsPro Bottom Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Image Tools Pro</h4>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="compress.html">Image Compressor</a></li>
+                        <li><a href="resize.html">Image Resizer</a></li>
+                        <li><a href="convert.html">Image Converter</a></li>
+                        <li><a href="crop.html">Image Cropper</a></li>
+                        <li><a href="remove-bg.html">Background Remover</a></li>
+                    </ul>
+                </div>
+                
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Image Tools Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mainNav = document.getElementById('main-nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ImageToolsPro - Online Image Editing Tools",
+        "url": "https://www.yourdomain.com",
+        "description": "Free online image tools - remove backgrounds, crop, resize, convert, and compress images. All tools work in your browser with no upload required.",
+        "applicationCategory": "ImageEditor",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "ImageToolsPro"
+        }
+    }
+    </script>
+</body>
+</html>

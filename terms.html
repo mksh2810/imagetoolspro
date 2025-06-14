@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | ImageToolsPro</title>
+    <meta name="description" content="Terms of Service for ImageToolsPro's free online image editing tools.">
+    <meta name="keywords" content="terms of service, image tools, legal agreement">
+    <meta name="author" content="ImageToolsPro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Terms of Service | ImageToolsPro">
+    <meta property="og:description" content="Terms of Service for ImageToolsPro's free online image editing tools.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourdomain.com/terms">
+    <meta property="og:image" content="https://www.yourdomain.com/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --primary-dark: #3a5bef;
+            --secondary-color: #f8f9fa;
+            --text-color: #2d3436;
+            --light-text: #636e72;
+            --border-color: #dfe6e9;
+            --success-color: #00b894;
+            --warning-color: #fdcb6e;
+            --error-color: #d63031;
+            --footer-bg: #1e272e;
+            --footer-text: #dfe6e9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f5f6fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--text-color);
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        main {
+            padding: 40px 0;
+        }
+        
+        .legal-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .legal-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .legal-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .legal-header p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .legal-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .legal-section {
+            margin-bottom: 30px;
+        }
+        
+        .legal-section h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .legal-section h3 {
+            font-size: 1.2rem;
+            margin: 20px 0 10px;
+            color: var(--text-color);
+        }
+        
+        .legal-section p, .legal-section ul {
+            margin-bottom: 15px;
+            color: var(--light-text);
+        }
+        
+        .legal-section ul {
+            padding-left: 20px;
+        }
+        
+        .legal-section li {
+            margin-bottom: 8px;
+        }
+        
+        .last-updated {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-text);
+            margin-top: 40px;
+        }
+        
+        /* Enhanced Footer Styles */
+        footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 60px 0 30px;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: all 0.3s;
+            opacity: 0.8;
+            display: inline-block;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #fff;
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .copyright {
+            color: var(--footer-text);
+            opacity: 0.7;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: all 0.3s;
+            opacity: 0.7;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--footer-text);
+            font-size: 18px;
+            transition: all 0.3s;
+            opacity: 0.7;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 20px;
+            }
+            
+            .legal-header h1 {
+                font-size: 2rem;
+            }
+            
+            .legal-container {
+                padding: 25px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .legal-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fas fa-crop-alt"></i></span>
+                <span>Image<span style="color: var(--primary-color);">ToolsPro</span></span>
+            </a>
+            
+            <button class="mobile-menu-btn">☰</button>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="compress.html">Image Compressor</a></li>
+                    <li><a href="resize.html">Image Resizer</a></li>
+                    <li><a href="convert.html">Image Converter</a></li>
+                    <li><a href="crop.html">Image Cropper</a></li>
+                    <li><a href="remove-bg.html">Background Remover</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="legal-container">
+            <div class="legal-header">
+                <h1>Terms of Service</h1>
+                <p>Last Updated: June 14, 2025</p>
+            </div>
+            
+            <div class="legal-content">
+                <div class="legal-section">
+                    <h2>1. Introduction</h2>
+                    <p>Welcome to ImageToolsPro ("we," "our," or "us"). These Terms of Service ("Terms") govern your use of our website and services (collectively, the "Service"). By accessing or using the Service, you agree to be bound by these Terms.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>2. Description of Service</h2>
+                    <p>ImageToolsPro provides free online tools for image editing, including but not limited to background removal, cropping, resizing, format conversion, and compression. All processing occurs in your browser, and we do not store your images on our servers.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>3. User Responsibilities</h2>
+                    <p>By using our Service, you agree to:</p>
+                    <ul>
+                        <li>Use the Service only for lawful purposes</li>
+                        <li>Not upload any content that infringes on intellectual property rights</li>
+                        <li>Not use the Service to distribute malware or harmful content</li>
+                        <li>Comply with all applicable laws and regulations</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>4. Intellectual Property</h2>
+                    <p>The Service and its original content, features, and functionality are owned by ImageToolsPro and are protected by international copyright, trademark, and other intellectual property laws.</p>
+                    <p>You retain all rights to the images you upload and process through our Service. We claim no ownership over your content.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>5. Privacy</h2>
+                    <p>Your privacy is important to us. Please review our <a href="privacy.html">Privacy Policy</a>, which explains how we collect, use, and protect your information.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>6. Disclaimer of Warranties</h2>
+                    <p>The Service is provided "as is" without warranties of any kind, either express or implied. We do not warrant that:</p>
+                    <ul>
+                        <li>The Service will be uninterrupted or error-free</li>
+                        <li>The results obtained from using the Service will be accurate or reliable</li>
+                        <li>The quality of any products, services, or information obtained through the Service will meet your expectations</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>7. Limitation of Liability</h2>
+                    <p>In no event shall ImageToolsPro be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the Service.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>8. Changes to Terms</h2>
+                    <p>We reserve the right to modify these Terms at any time. We will notify users of any changes by updating the "Last Updated" date at the top of this page. Your continued use of the Service after such modifications constitutes your acceptance of the new Terms.</p>
+                </div>
+                
+                <div class="legal-section">
+                    <h2>9. Governing Law</h2>
+                    <p>These Terms shall be governed by and construed in accordance with the laws of India, without regard to its conflict of law provisions.</p>
+                </div>
+                
+                <div class="last-updated">
+                    <p>These Terms of Service were last updated on June 14, 2025.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Image Compressor</h4>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="compress.html">Image Compressor</a></li>
+                        <li><a href="resize.html">Image Resizer</a></li>
+                        <li><a href="convert.html">Image Converter</a></li>
+                        <li><a href="crop.html">Image Cropper</a></li>
+                        <li><a href="remove-bg.html">Background Remover</a></li>
+                    </ul>
+                </div>
+                
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Image Tools Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mainNav = document.getElementById('main-nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

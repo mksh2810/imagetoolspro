@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Tools Pro | Free Online Background Removal Tool</title>
+    <meta name="description" content="Remove backgrounds from images automatically using Remove.bg API. Works with JPG, PNG, and WebP formats.">
+    <meta name="keywords" content="background remover, remove bg, transparent background, image editor, free photo tool">
+    <meta name="author" content="BgRemoverPro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.yourdomain.com/background-remover">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Image Tools Pro | Free Online Background Removal Tool">
+    <meta property="og:description" content="Remove backgrounds from images automatically using Remove.bg API. Works with JPG, PNG, and WebP formats.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yourdomain.com/background-remover">
+    <meta property="og:image" content="https://www.yourdomain.com/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #00a8ff;
+            --primary-dark: #0097e6;
+            --secondary-color: #f8f9fa;
+            --text-color: #2d3436;
+            --light-text: #636e72;
+            --border-color: #dfe6e9;
+            --success-color: #00b894;
+            --warning-color: #fdcb6e;
+            --error-color: #d63031;
+            --footer-bg: #1e272e;
+            --footer-text: #dfe6e9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f5f6fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--text-color);
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        .ad-banner {
+            background-color: #f1f3ff;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px dashed var(--border-color);
+        }
+
+        .ad-banner-vertical {
+            background-color: #f1f3ff;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px dashed var(--border-color);
+            margin: 0 10px;
+            width: 160px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .ad-banner p {
+            color: var(--light-text);
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        main {
+            padding: 40px 0;
+            display: flex;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        .ad-column {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .hero p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto 25px;
+            font-size: 1.1rem;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 25px;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 168, 255, 0.03);
+        }
+        
+        .upload-area.active {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 168, 255, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .upload-area h3 {
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+        
+        .upload-area p {
+            color: var(--light-text);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 168, 255, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(0, 168, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 168, 255, 0.1);
+        }
+        
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+        
+        .editor-container {
+            display: none;
+            margin-bottom: 25px;
+        }
+        
+        .editor-container.active {
+            display: block;
+        }
+        
+        .image-container {
+            position: relative;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAA+UlEQVQ4y+3UMUoDQRTG8Z8psJBUKTyAR7ATvIBgYSM2Fh7AC3gDG0GxEAtB0CJgYWNhIYgQYmGxWQjBZGF3JzvrFln4wjDz5n3/mXkzO/Om1Wr9V1XgHtzgBc94wDm2sZRqWMQZ3vGJb3zFfX7iA6cYTTGcxQ0+8IVvfOELX/jEJ+6wn2I4gWt84h0feMc73vCGN7ziBS+4xXaK4RSu8I5XvOIFz3jGM57xhCc84hEPuMNuiuE8rvGGRzziAQ+4xz3ucIsbXOMKV7jEeYrhEi7xhkfc4x73uMMtbnGNK1ziAuf4BkOqJXxZg0iVAAAAAElFTkSuQmCC');
+            background-size: 20px 20px;
+        }
+        
+        #originalImage {
+            max-width: 100%;
+            display: block;
+        }
+        
+        .api-status {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .api-status.active {
+            display: flex;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 168, 255, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 15px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .results {
+            display: none;
+        }
+        
+        .results.active {
+            display: block;
+        }
+        
+        .result-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAA+UlEQVQ4y+3UMUoDQRTG8Z8psJBUKTyAR7ATvIBgYSM2Fh7AC3gDG0GxEAtB0CJgYWNhIYgQYmGxWQjBZGF3JzvrFln4wjDz5n3/mXkzO/Om1Wr9V1XgHtzgBc94wDm2sZRqWMQZ3vGJb3zFfX7iA6cYTTGcxQ0+8IVvfOELX/jEJ+6wn2I4gWt84h0feMc73vCGN7ziBS+4xXaK4RSu8I5XvOIFz3jGM57xhCc84hEPuMNuiuE8rvGGRzziAQ+4xz3ucIsbXOMKV7jEeYrhEi7xhkfc4x73uMMtbnGNK1ziAuf4BkOqJXxZg0iVAAAAAElFTkSuQmCC');
+            background-size: 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .result-image {
+            max-width: 100%;
+            max-height: 400px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            color: var(--text-color);
+        }
+        
+        .feature-card p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Enhanced Footer Styles */
+        footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 60px 0 30px;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: all 0.3s;
+            opacity: 0.8;
+            display: inline-block;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #fff;
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .copyright {
+            color: var(--footer-text);
+            opacity: 0.7;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: all 0.3s;
+            opacity: 0.7;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--footer-text);
+            font-size: 18px;
+            transition: all 0.3s;
+            opacity: 0.7;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 1024px) {
+            .ad-column {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tool-container {
+                padding: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-options .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">✂️</span>
+                <span>Bg<span style="color: var(--primary-color);">RemoverPro</span></span>
+            </a>
+            
+            <button class="mobile-menu-btn">☰</button>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="compress.html">Image Compressor</a></li>
+                    <li><a href="resize.html">Image Resizer</a></li>
+                    <li><a href="convert.html">Image Converter</a></li>
+                    <li><a href="crop.html">Image Cropper</a></li>
+                    <li><a href="remove-bg.html">Background Remover</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Left Vertical Ad Column -->
+        <div class="ad-column">
+            <div class="ad-banner-vertical">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <div id="left-vertical-ad">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                         crossorigin="anonymous"></script>
+                    <!-- BgRemoverPro Vertical Ad -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                         data-ad-slot="YOUR_AD_SLOT_ID"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Top Ad Banner -->
+            <div class="ad-banner">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <div id="top-ad">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                         crossorigin="anonymous"></script>
+                    <!-- BgRemoverPro Top Banner -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                         data-ad-slot="YOUR_AD_SLOT_ID"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+            
+            <section class="hero">
+                <h1>Remove Backgrounds Instantly</h1>
+                <p>Upload an image and our AI will automatically remove the background in seconds. Powered by Remove.bg API.</p>
+            </section>
+            
+            <section class="tool-container">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <h3>Select or Drop Image Here</h3>
+                    <p>Supports JPG, PNG, and WebP (Max 10MB)</p>
+                    <button class="btn" id="selectFileBtn">Select Image</button>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                </div>
+                
+                <div class="editor-container" id="editorContainer">
+                    <div class="image-container">
+                        <img id="originalImage" src="" alt="Original image">
+                        <div class="api-status" id="apiStatus">
+                            <div class="spinner"></div>
+                            <p>Processing image with Remove.bg API...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results" id="resultsSection">
+                    <h3 style="margin-bottom: 20px;">Background Removed Successfully!</h3>
+                    <div class="result-card">
+                        <img id="resultImage" class="result-image" alt="Result with transparent background">
+                        
+                        <div class="download-options">
+                            <button class="btn" id="downloadPngBtn">Download PNG</button>
+                            <button class="btn btn-outline" id="downloadJpgBtn">Download JPG</button>
+                            <button class="btn btn-outline" id="downloadWebpBtn">Download WebP</button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons" style="margin-top: 30px;">
+                        <button class="btn btn-outline" id="processAnotherBtn">Process Another Image</button>
+                    </div>
+                    
+                    <div class="related-tools" style="margin-top: 40px;">
+                        <h4>You might also need:</h4>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+                            <a href="compressor.html" class="btn btn-outline">Compress Image</a>
+                            <a href="resizer.html" class="btn btn-outline">Resize Image</a>
+                            <a href="converter.html" class="btn btn-outline">Convert Format</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Middle Ad Banner -->
+            <div class="ad-banner">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <div id="middle-ad">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                         crossorigin="anonymous"></script>
+                    <!-- BgRemoverPro Middle Rectangle -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                         data-ad-slot="YOUR_AD_SLOT_ID"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+            
+            <section class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>AI-Powered</h3>
+                    <p>Our advanced AI detects and removes backgrounds automatically in seconds with professional quality results.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy Focused</h3>
+                    <p>All processing happens via secure API. Your images are automatically deleted after processing is complete.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Multiple Formats</h3>
+                    <p>Download your transparent background images in PNG, JPG, or WebP formats to suit your needs.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Vertical Ad Column -->
+        <div class="ad-column">
+            <div class="ad-banner-vertical">
+                <p>Advertisement</p>
+                <!-- Replace with your Google AdSense code -->
+                <div id="right-vertical-ad">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                         crossorigin="anonymous"></script>
+                    <!-- BgRemoverPro Vertical Ad -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                         data-ad-slot="YOUR_AD_SLOT_ID"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Bottom Ad Banner -->
+    <div class="container">
+        <div class="ad-banner">
+            <p>Advertisement</p>
+            <!-- Replace with your Google AdSense code -->
+            <div id="bottom-ad">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                     crossorigin="anonymous"></script>
+                <!-- BgRemoverPro Bottom Banner -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Image Tools Pro</h4>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="compress.html">Image Compressor</a></li>
+                        <li><a href="resize.html">Image Resizer</a></li>
+                        <li><a href="convert.html">Image Converter</a></li>
+                        <li><a href="crop.html">Image Cropper</a></li>
+                        <li><a href="remove-bg.html">Background Remover</a></li>
+                    </ul>
+                </div>
+                
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Image Tools Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for social icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // DOM Elements
+        const fileInput = document.getElementById('fileInput');
+        const uploadArea = document.getElementById('uploadArea');
+        const selectFileBtn = document.getElementById('selectFileBtn');
+        const editorContainer = document.getElementById('editorContainer');
+        const originalImage = document.getElementById('originalImage');
+        const apiStatus = document.getElementById('apiStatus');
+        const resultsSection = document.getElementById('resultsSection');
+        const resultImage = document.getElementById('resultImage');
+        const downloadPngBtn = document.getElementById('downloadPngBtn');
+        const downloadJpgBtn = document.getElementById('downloadJpgBtn');
+        const downloadWebpBtn = document.getElementById('downloadWebpBtn');
+        const processAnotherBtn = document.getElementById('processAnotherBtn');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mainNav = document.getElementById('main-nav');
+        
+        // Variables
+        let currentFile = null;
+        
+        // Event Listeners
+        selectFileBtn.addEventListener('click', () => fileInput.click());
+        
+        fileInput.addEventListener('change', handleFileSelect);
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('active');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('active');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('active');
+            if (e.dataTransfer.files.length > 0) {
+                fileInput.files = e.dataTransfer.files;
+                handleFileSelect({ target: fileInput });
+            }
+        });
+        
+        downloadPngBtn.addEventListener('click', () => downloadImage('png'));
+        downloadJpgBtn.addEventListener('click', () => downloadImage('jpg'));
+        downloadWebpBtn.addEventListener('click', () => downloadImage('webp'));
+        processAnotherBtn.addEventListener('click', resetTool);
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        
+        // Functions
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            
+            // Validate file
+            const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
+            const isValidType = validTypes.includes(file.type);
+            const isValidSize = file.size <= 10 * 1024 * 1024; // 10MB
+            
+            if (!isValidType) {
+                alert('File is not a supported image type (JPEG, PNG, WebP).');
+                return;
+            }
+            
+            if (!isValidSize) {
+                alert('File exceeds the 10MB size limit.');
+                return;
+            }
+            
+            currentFile = file;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                originalImage.onload = function() {
+                    uploadArea.style.display = 'none';
+                    editorContainer.classList.add('active');
+                    apiStatus.classList.add('active');
+                    
+                    // Process with Remove.bg API
+                    processWithRemoveBg(file);
+                };
+                originalImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        function processWithRemoveBg(file) {
+            // Create FormData object
+            const formData = new FormData();
+            formData.append('image_file', file);
+            
+            // API endpoint (you would typically call your own backend here)
+            // Note: In production, you should call your own backend that has the Remove.bg API key
+            // to avoid exposing it in client-side code
+            const apiUrl = 'https://api.remove.bg/v1.0/removebg';
+            
+            // Make API request
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    // In production, this should be handled by your backend
+                    'X-Api-Key': 'YOUR_REMOVE_BG_API_KEY' // Replace with your actual API key
+                },
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('API request failed');
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                // Create URL for the processed image
+                const url = URL.createObjectURL(blob);
+                
+                // Display result
+                resultImage.src = url;
+                resultImage.dataset.processedData = url;
+                
+                // Hide loading, show results
+                apiStatus.classList.remove('active');
+                resultsSection.classList.add('active');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                apiStatus.classList.remove('active');
+                alert('Error processing image. Please try again or use a different image.');
+                resetTool();
+            });
+        }
+        
+        function downloadImage(format) {
+            const link = document.createElement('a');
+            
+            if (format === 'png') {
+                link.href = resultImage.dataset.processedData;
+                link.download = `bg-removed-${currentFile.name.split('.')[0]}.png`;
+            } else {
+                // For JPG/WebP we need to add a white background
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+                
+                img.onload = function() {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    
+                    // Add white background
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Draw processed image
+                    ctx.drawImage(img, 0, 0);
+                    
+                    if (format === 'jpg') {
+                        link.href = canvas.toDataURL('image/jpeg', 0.9);
+                        link.download = `bg-removed-${currentFile.name.split('.')[0]}.jpg`;
+                    } else {
+                        link.href = canvas.toDataURL('image/webp', 0.9);
+                        link.download = `bg-removed-${currentFile.name.split('.')[0]}.webp`;
+                    }
+                    
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                };
+                img.src = resultImage.dataset.processedData;
+                return;
+            }
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        function resetTool() {
+            fileInput.value = '';
+            currentFile = null;
+            
+            uploadArea.style.display = 'block';
+            editorContainer.classList.remove('active');
+            resultsSection.classList.remove('active');
+            apiStatus.classList.remove('active');
+        }
+        
+        function toggleMobileMenu() {
+            mainNav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
